@@ -2,8 +2,8 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Todo } from './types';
 
 interface TodoItemProps {
-    todo: Todo,
-    onDelete: (id: string) => void,
+    todo: Todo;
+    onDelete: (id: string) => void;
 }
 
 export function TodoItem({ todo, onDelete }: Readonly<TodoItemProps>) {
@@ -11,13 +11,15 @@ export function TodoItem({ todo, onDelete }: Readonly<TodoItemProps>) {
 
     return (
         <View style={styles.todoItem}>
-            <Pressable android_ripple={{ color: '#210644' }}
+            <Pressable
+                android_ripple={{ color: '#210644' }}
                 onPress={() => onDelete(id)}
-                style={({ pressed }) => pressed && styles.pressedItem}>
+                style={({ pressed }) => pressed && styles.pressedItem}
+            >
                 <Text style={styles.todoText}>{text}</Text>
             </Pressable>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({

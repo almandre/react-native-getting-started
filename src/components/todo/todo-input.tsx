@@ -3,9 +3,9 @@ import { Button, Image, Modal, StyleSheet, TextInput, View } from 'react-native'
 const goalImage = require('../../../assets/images/goal.png');
 
 interface TodoInputProps {
-    visible: boolean,
-    onInsert: (text: string) => void,
-    onCancel: () => void,
+    visible: boolean;
+    onInsert: (text: string) => void;
+    onCancel: () => void;
 }
 
 export function TodoInput({ visible, onInsert, onCancel }: Readonly<TodoInputProps>) {
@@ -13,21 +13,30 @@ export function TodoInput({ visible, onInsert, onCancel }: Readonly<TodoInputPro
 
     const handleTodoChange = (text: string) => {
         setText(text);
-    }
+    };
 
     const handleTodoInsert = () => {
         onInsert(text);
         setText('');
-    }
+    };
 
     return (
         <Modal visible={visible} animationType='slide'>
             <View style={styles.inputContainer}>
                 <Image style={styles.image} source={goalImage}></Image>
-                <TextInput style={styles.textInput} placeholder='Your course goal!' onChangeText={handleTodoChange} value={text} />
+                <TextInput
+                    style={styles.textInput}
+                    placeholder='Your course goal!'
+                    onChangeText={handleTodoChange}
+                    value={text}
+                />
                 <View style={styles.buttonContainer}>
                     <View style={styles.button}>
-                        <Button title='Add Goal' onPress={handleTodoInsert} color='#b180f0' />
+                        <Button
+                            title='Add Goal'
+                            onPress={handleTodoInsert}
+                            color='#b180f0'
+                        />
                     </View>
                     <View style={styles.button}>
                         <Button title='Cancel' onPress={onCancel} color='#f31282' />
@@ -35,7 +44,7 @@ export function TodoInput({ visible, onInsert, onCancel }: Readonly<TodoInputPro
                 </View>
             </View>
         </Modal>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
